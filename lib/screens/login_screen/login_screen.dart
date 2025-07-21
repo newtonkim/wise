@@ -1,6 +1,8 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:wise/constants/constants.dart';
+import 'package:wise/screens/login_screen/login_screen.dart';
+import 'package:wise/screens/login_screen/components/login_content.dart';
 import 'package:wise/screens/login_screen/center_widget/center_widget.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -69,6 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
            child: bottomWidget(screenSize.width),
          ),
          CenterWidget(size: screenSize),
+         const LoginContent(),
         ],
       ),
     );

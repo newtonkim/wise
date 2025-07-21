@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: kBackgroundColor,
         textTheme: Theme.of(context).textTheme.apply(
           bodyColor: kPrimaryColor,
+          fontFamily: 'Montserrat',
         ),
       ),
 
