@@ -127,7 +127,7 @@ class LoginContent extends StatelessWidget {
             ),
           ),
         ),
-      ),
+      );
   }
 
 
@@ -173,7 +173,7 @@ Widget build(BuildContext context) {
         alignment: Alignment.bottomCenter,
         child: Padding(
           padding: EdgeInsets.only(bottom: 50),
-          child: BottonText(
+          child: BottomText(
             screen: currenScreen,
           ),
         ),
