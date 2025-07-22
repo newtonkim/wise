@@ -8,9 +8,8 @@ class CenterWidgetPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..style = PaintingStyle.stroke;
-      ..strokeWidth = 10.0,
-      ..imageFilter = ImageFilter.blur(sigmaX: 10, sigmaY: 10)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 10.0
       ..color = Colors.black26;
 
     canvas.drawPath(path, paint);

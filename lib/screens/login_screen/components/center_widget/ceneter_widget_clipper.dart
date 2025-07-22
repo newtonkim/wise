@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+
 class CenterWidgetClipper extends CustomClipper<Path> {
   final Path path;
 

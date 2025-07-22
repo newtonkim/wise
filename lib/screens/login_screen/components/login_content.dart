@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
+import 'package:wise/constants/constants.dart';
 import 'package:wise/screens/login_screen/components/top_text.dart';
 
 
@@ -24,7 +26,7 @@ class LoginContent extends StatelessWidget {
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(30),
-                borderSide: borderSide.none,
+                borderSide: BorderSide.none,
               ),
               filled: true,
               fillColor: Colors.white,
@@ -37,34 +39,28 @@ class LoginContent extends StatelessWidget {
     );
   }
 
-  Widget loginButton(String title) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-            ),
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-             padding: const EdgeInsets.symmetric(vertical: 14),
-             shape:const StadiumBorder(),
-             primary: kSecondaryColor,
-             elevation: 8,
-             shadowColor: Colors.black87,
-            ),
-            child: Text(
-              title,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
+ Widget loginButton(String title) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
+    child: ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(vertical: 14),
+        shape: const StadiumBorder(),
+        backgroundColor: kSecondaryColor,
+        elevation: 8,
+        shadowColor: Colors.black87,
+      ),
+      onPressed: () {},
+      child: Text(
+        title,
+        style: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
         ),
-  }
+      ),
+    ),
+  );
+}
 
   Widget orDivider() {
     return Padding(
@@ -93,38 +89,33 @@ class LoginContent extends StatelessWidget {
   }
 
 
-  @override
-  Widget build(BuildContext context) {
-    const currenScreen = Screens.createAccount;
-    return Stack(
-      children:[
-          Positioned(
-            top: 136,
-            left: 24,
-            child: TopText(
-              screen: currenScreen
-            ),
-            Padding(
-              Padding: const EdgeInsets.only(top: 100),
-              child: Stack(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.stretch,
-                    children: [
-                      inputField('Name', Ionicons.person_outline),
-                      inputField('Email', Ionicons.mail_outline),
-                      inputField('Password', Ionicons.lock_closed_outline),
-                      loginButton('Sign Up'),
-                      orDivider(),
-
-                    ],
-                  )
-                ],
-              ),
-            );
-          ),
-      ],
-    );
-  }
+@override
+Widget build(BuildContext context) {
+  const currenScreen = Screens.createAccount;
+  return Stack(
+    children: [
+      Positioned(
+        top: 136,
+        left: 24,
+        child: TopText(
+          screen: currenScreen,
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.only(top: 100),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            inputField('Name', Ionicons.person_outline),
+            inputField('Email', Ionicons.mail_outline),
+            inputField('Password', Ionicons.lock_closed_outline),
+            loginButton('Sign Up'),
+            orDivider(),
+          ],
+        ),
+      ),
+    ],
+  );
+}
 }

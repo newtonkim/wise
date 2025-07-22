@@ -19,6 +19,6 @@ class TopText extends StatelessWidget {
         fontSize: 40,
         fontWeight: FontWeight.w600,
       ),
-    )
+    );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wise/constants/constants.dart';
-import 'package:wise/screens/login_screen/login.dart';
+import 'package:wise/screens/login_screen/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
