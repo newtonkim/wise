@@ -17,8 +17,67 @@ class LoginContent extends StatefulWidget {
 
 class _LoginContentState extends State<LoginContent>
     with TickerProviderStateMixin {
-  late final List<Widget> createAccountContent;
-  late final List<Widget> loginContent;
+  late List<Widget> createAccountContent;
+  late List<Widget> loginContent;
+
+  void _screenChangeListener(AnimationStatus status) {
+    if (status == AnimationStatus.completed) {
+      setState(() {});
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    createAccountContent = [
+      inputField('Name', Ionicons.person_outline),
+      inputField('Email', Ionicons.mail_outline),
+      inputField('Password', Ionicons.lock_closed_outline),
+      loginButton('Sign Up'),
+      orDivider(),
+      logos(),
+    ];
+
+    loginContent = [
+      inputField('Email', Ionicons.mail_outline),
+      inputField('Password', Ionicons.lock_closed_outline),
+      loginButton('Log In'),
+      forgotPassWord(),
+    ];
+
+    ChangeScreenAnimation.initialize(
+      vsync: this,
+      createAccountItems: createAccountContent.length,
+      loginItems: loginContent.length,
+    );
+
+    for (var i = 0; i < createAccountContent.length; i++) {
+      createAccountContent[i] = HelperFunctions.wrapWithAnimatedBuilder(
+        animation: ChangeScreenAnimation.createAccountAnimations[i],
+        child: createAccountContent[i],
+      );
+    }
+
+    for (var i = 0; i < loginContent.length; i++) {
+      loginContent[i] = HelperFunctions.wrapWithAnimatedBuilder(
+        animation: ChangeScreenAnimation.loginAnimations[i],
+        child: loginContent[i],
+      );
+    }
+
+    ChangeScreenAnimation.bottomTextAnimation.addStatusListener(
+      _screenChangeListener,
+    );
+  }
+
+  @override
+  void dispose() {
+    ChangeScreenAnimation.bottomTextAnimation.removeStatusListener(
+      _screenChangeListener,
+    );
+    ChangeScreenAnimation.dispose();
+    super.dispose();
+  }
 
   Widget inputField(String hint, IconData iconData) {
     return Padding(
@@ -127,59 +186,12 @@ class _LoginContentState extends State<LoginContent>
   }
 
   @override
-  void initState() {
-    createAccountContent = [
-      inputField('Name', Ionicons.person_outline),
-      inputField('Email', Ionicons.mail_outline),
-      inputField('Password', Ionicons.lock_closed_outline),
-      loginButton('Sign Up'),
-      orDivider(),
-      logos(),
-    ];
-
-    loginContent = [
-      inputField('Email', Ionicons.mail_outline),
-      inputField('Password', Ionicons.lock_closed_outline),
-      loginButton('Log In'),
-      forgotPassWord(),
-    ];
-
-    ChangeScreenAnimation.initialize(
-      vsync: this,
-      createAccountItems: createAccountContent.length,
-      loginItems: loginContent.length,
-    );
-
-    for (var i = 0; i < createAccountContent.length; i++) {
-      createAccountContent[i] = HelperFunctions.wrapWithAnimatedBuilder(
-        animation: ChangeScreenAnimation.createAccountAnimations[i],
-        child: createAccountContent[i],
-      );
-    }
-
-    for (var i = 0; i < loginContent.length; i++) {
-      loginContent[i] = HelperFunctions.wrapWithAnimatedBuilder(
-        animation: ChangeScreenAnimation.createAccountAnimations[i],
-        child: loginContent[i],
-      );
-    }
-
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    ChangeScreenAnimation.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Positioned(top: 136, left: 24, child: TopText()),
         Padding(
-          padding: const EdgeInsets.only(top: 100),
+          padding: const EdgeInsets.only(top: 180),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,

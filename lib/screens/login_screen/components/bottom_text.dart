@@ -16,12 +16,11 @@ class _BottomTextState extends State<BottomText> {
   void initState() {
     ChangeScreenAnimation.bottomTextAnimation.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        setState(() {
-          ChangeScreenAnimation.currentScreen =
-              ChangeScreenAnimation.currentScreen == Screens.createAccount
-              ? Screens.welcomeBack
-              : Screens.createAccount;
-        });
+        setState(() {});
+        ChangeScreenAnimation.currentScreen =
+            ChangeScreenAnimation.currentScreen == Screens.createAccount
+                ? Screens.welcomeBack
+                : Screens.createAccount;
       }
     });
     super.initState();
