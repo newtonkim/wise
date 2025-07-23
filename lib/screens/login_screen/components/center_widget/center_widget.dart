@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:wise/constants/constants.dart';
 import 'package:wise/screens/login_screen/components/center_widget/center_widget_painter.dart';
 import 'package:wise/screens/login_screen/components/center_widget/ceneter_widget_clipper.dart';
 

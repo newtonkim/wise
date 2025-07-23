@@ -1,11 +1,11 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'package:wise/constants/constants.dart';
 import 'package:wise/screens/login_screen/components/login_content.dart';
 import 'package:wise/screens/login_screen/components/center_widget/center_widget.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+@override
 State<LoginScreen> createState() => _LoginScreenState();
 }
 
